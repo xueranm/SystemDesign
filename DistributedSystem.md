@@ -47,3 +47,17 @@ In summary, distributed system is the solution for all above
 
   It is the execution of multiple computations at the same time, and potentially on the same piece of data.
 
+### Measures of Correctness 
+
+* Safety Property 
+* Liveness Property
+
+### System Models
+
+* Key questions for a distributed system:
+  - How the nodes of a distributed system interact with each other
+  - How the nodes of a distributed system can fail
+
+* Categories of Distributed systems:
+  - __Synchronous systems__: It is one where each node has an accurate clock, and there is a known upper bound on the message transmission delay and processing time. All nodes run in lock-step.
+  - __Asynchronous systems__: It is one where there is no fixed upper bound on how long it takes for a node to deliver a message, or how much time elapses between consecutive steps of a node. All nodes run at independent rates.
