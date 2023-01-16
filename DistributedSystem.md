@@ -1,5 +1,6 @@
 # Distributed Systems
 
+## Intro
 > “A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another.”
 
 Assume a node is a machine then
@@ -27,4 +28,22 @@ __Availability__
 Solution: Redundancy, store data into multiple, redundant computers\
 
 In summary, distributed system is the solution for all above
+
+### Fallacies
+
+<img width="698" alt="image" src="https://user-images.githubusercontent.com/24993672/212602782-e4f99b19-9952-4cd6-b84c-1ccc8f7a7e1c.png">
+
+### Properties
+
+<img width="592" alt="image" src="https://user-images.githubusercontent.com/24993672/212604106-0f25b342-7ddc-4985-a488-aedda79b3cdc.png">
+
+* Network Asynchrony
+ 
+  It is a property of communication networks that cannot provide strong guarantees around delivering events, e.g., a maximum amount of time a message requires for delivery.
+* Partial Failures
+
+  These are the cases where only some components of a distributed system fail.
+* Concurrency
+
+  It is the execution of multiple computations at the same time, and potentially on the same piece of data.
 
