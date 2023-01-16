@@ -69,3 +69,4 @@ In summary, distributed system is the solution for all above
 * Omission: A node fails to respond to incoming requests.
 * Byzantine: A node exhibits arbitrary behavior: it may transmit arbitrary messages at arbitrary times, take incorrect steps, or stop.
 
+### Exactly-Once Semantics
