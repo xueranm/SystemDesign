@@ -8,3 +8,5 @@ __Reliable systems__ handle faults, failures, and errors.\
 __Effective systems__ meet all user needs and business requirements.\
 __Maintainable systems__ are flexible and easy to scale up or down. The ability to add new features also comes under the umbrella of maintainability.
 
+Suggested Prerequisites:
+OS, Computer Network, Distributed System
