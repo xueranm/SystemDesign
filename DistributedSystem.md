@@ -120,7 +120,11 @@ Stateful systems present many more challenges as different nodes can hold differ
   Some systems that leverage this technique: Google's BigTable, Apache HBase. 
   
 * Hash Partitioning
-  Apply a hash function to a specific attribute of each row. This results in a number that determines which partition (node) this row belongs to. 
+  Apply a hash function to a specific attribute of each row. This results in a number that determines which partition (node) this row belongs to. \
+  Mapping Process: Assume we have n number of nodes, and try to identify which node locates a record with a value s, we'll calculate it with the fomula __hash(s) mod n__.\
+  The mapping will take place both when we write a new record or receive a request to find a record. And if any node failed, the re-mapping and reassignment is needed.\
+  Pros: No need to store and maintain the mapping because it can calculate the partitioning mapping at runtime -> great for both data storage and performance (no additional requests to find the mapping), most likely the hash function will uniformly distribute the data across our system's nodes and prevent overloading of some nodes\
+  Cons: Can't perform range queries, adding or removing nodes causes repartition -> significant data movement
   
 * Consistent Hashing
 
