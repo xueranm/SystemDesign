@@ -152,5 +152,13 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Pessimistic replication: try to guarantee that all the replicas are identical from the beginning
   * Optimistic replication (lazy replication): allows the different replicas to diverge. They will converge again if the system doesn't receive any updates or enter a quiesced state for a period of time 
   
+### Single-Master Replication Algorithm
+  Alias, __primary-backup replication__.\
+  It is a technique where we designate a single node amongst the replicas as the leader (or primary) that receives all the updates. Remaining replicas are followers (or secondaries) which only handle read requests. \
+  Leader receives updates and executes them locally and __propagates__ the updates to the followers. This ensures the consistent view of the data for all replicas. 
+  <img width="405" alt="image" src="https://user-images.githubusercontent.com/24993672/212803284-05c67620-eede-4f3f-a712-ca2e1169fca8.png">
+
+  
+  
   
   
