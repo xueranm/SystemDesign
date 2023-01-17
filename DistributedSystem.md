@@ -82,3 +82,15 @@ __Delivery vs. Processing__\
 
 So important and possible is exactly-Once for Processing, but not for Delivery\
 __Other Delivery Semantics__: at-most-once -- send every message only once, at-least-once -- send a message continuously until get an acknowledgement from recipient
+
+### Failure
+
+Reason: The asynchronous nature of the network in a distributed system makes it hard to differentiate between a crashed node and a node that is just really slow to respond to requests.\
+One mechanism to detect failure: __Timeouts__\
+Trade-off between small or large timeout value: too small -> false positives, too large -> waiting time\
+Failure Detector Properties:
+* Completeness: the percentage of crashed nodes a failure detector identifies in a certain period
+* Accuracy: number of mistakes that the detector makes in a certain period
+
+
+
