@@ -104,7 +104,7 @@ Stateful systems present many more challenges as different nodes can hold differ
 ### Partitioning
 
 * Scalability
-  Partitioning can be used to achieve scalability:
+  Partitioning can improve the scalability and performance of a system by distributing data and request load to multiple nodes:
   
 <img width="561" alt="image" src="https://user-images.githubusercontent.com/24993672/212787819-39c794c7-6dfe-47f6-bc7c-0fa0485d3ae4.png">
 
@@ -144,4 +144,10 @@ Stateful systems present many more challenges as different nodes can hold differ
   However, We can use __Virtual nodes__ (assign each physical node multiple locations in the ring) to mitigate these issues. \
   Some systems that leverage this technique: Apache Cassandra
 
+### Replication
+
+* Availability (the ability of the system to remain functional despite failures in parts of it)
+  Replication is used to increase availability. Replication includes storing the same piece of data in multiple nodes (called replicas) so if any one crashes, data is not lost and requests can be served from the other nodes meanwhile. 
+  
+  
   
