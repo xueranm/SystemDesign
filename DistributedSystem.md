@@ -103,7 +103,7 @@ Stateful systems present many more challenges as different nodes can hold differ
 
 ### Partitioning
 
-* Scalability
+___Scalability__\
   Partitioning can improve the scalability and performance of a system by distributing data and request load to multiple nodes:
   
 <img width="561" alt="image" src="https://user-images.githubusercontent.com/24993672/212787819-39c794c7-6dfe-47f6-bc7c-0fa0485d3ae4.png">
@@ -146,8 +146,11 @@ Stateful systems present many more challenges as different nodes can hold differ
 
 ### Replication
 
-* Availability (the ability of the system to remain functional despite failures in parts of it)
-  Replication is used to increase availability. Replication includes storing the same piece of data in multiple nodes (called replicas) so if any one crashes, data is not lost and requests can be served from the other nodes meanwhile. 
+__Availability__ (the ability of the system to remain functional despite failures in parts of it)\
+  Replication is used to increase availability. Replication includes storing the same piece of data in multiple nodes (called replicas) so if any one crashes, data is not lost and requests can be served from the other nodes meanwhile. \
+  Two main strategies for replication:
+  * Pessimistic replication: try to guarantee that all the replicas are identical from the beginning
+  * Optimistic replication (lazy replication): allows the different replicas to diverge. They will converge again if the system doesn't receive any updates or enter a quiesced state for a period of time 
   
   
   
