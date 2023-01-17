@@ -141,6 +141,7 @@ Stateful systems present many more challenges as different nodes can hold differ
 
   Pros: Comparing to hash partitioning, it reduced data movement when add or remove nodes\
   Cons: Potential for the data's non-uniform distributetion because of the random assignment of nodes in the rings, potential for more imbalanced data distribution when add or remove nodes. \
-  However, We can use __Virtual nodes__ (assign each physical node multiple locations in the ring) to mitigate these issues. 
+  However, We can use __Virtual nodes__ (assign each physical node multiple locations in the ring) to mitigate these issues. \
+  Some systems that leverage this technique: Apache Cassandra
 
   
