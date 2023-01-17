@@ -108,8 +108,8 @@ Stateful systems present many more challenges as different nodes can hold differ
   
 <img width="561" alt="image" src="https://user-images.githubusercontent.com/24993672/212787819-39c794c7-6dfe-47f6-bc7c-0fa0485d3ae4.png">
 
-  - Vertical Partitioning: join operation, normalization. limitation -- join operation may be less efficient and need to access data from multiple nodes
-  - Horizontal Partitioning (or sharding):alphabetical split, limitation -- search may need to access multiple nodes, potential for loss of transactional semantics, harder to perform atomic operations
+  - Vertical Partitioning: join operation, normalization. limitation -- join operation may be less efficient and need to access data from multiple nodes. Data modeling Practice. 
+  - Horizontal Partitioning (or sharding): alphabetical split, limitation -- search may need to access multiple nodes, potential for loss of transactional semantics, harder to perform atomic operations. A common feature of distributed databases.
 
 
 
