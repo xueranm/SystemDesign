@@ -111,5 +111,14 @@ Stateful systems present many more challenges as different nodes can hold differ
   - Vertical Partitioning: join operation, normalization. limitation -- join operation may be less efficient and need to access data from multiple nodes. Data modeling Practice. 
   - Horizontal Partitioning (or sharding): alphabetical split, limitation -- search may need to access multiple nodes, potential for loss of transactional semantics, harder to perform atomic operations. A common feature of distributed databases.
 
+### Algorithms for Horizontal Partitioning
 
+* Range Partitioning
+  Split a dataset into ranges according to the value of a specific attribute. Then store each range in a separate node. The system should store a list of all ranges and map which node stores a specific range. Example: alphabetical split.\
+  Pros: Simplicity and ease of implementation, range queries using partitioning key value, good performance for range queries when the queried range is small and resides in a single node, adjusting ranges (re-partitioning) easier and more efficient (exchanges data only between two nodes)\
+  Cons: can't query range using keys other than partitioning key, bad performance for range queries when the queried range is bid and resides in multiple nodes, uneven distribution of the traffic or data may cause some nodes to overload (for ex, for alphabetical split, some letters may appear as the initial letters more frequently than others)\
+  Some systems that leverage this technique: Google's BigTable, Apache HBase. 
+  
+* Hash Partitioning
+* Consistent Hashing
 
