@@ -96,4 +96,5 @@ There is no perfect failure detector
 
 ### Stateless and Stateful Systems
 
-
+Stateless distributed systems are much easier to design, build and scale. 
+Stateful systems present many more challenges as different nodes can hold different pieces of data which require additional work. They need to direct traffic to the right place and ensure each instance is in sync with the others.
