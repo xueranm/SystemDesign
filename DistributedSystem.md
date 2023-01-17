@@ -191,7 +191,7 @@ __Availability__ (the ability of the system to remain functional despite failure
   > It is an alternative replication technique that favors higher availability and performance over data consistency. In it, all replicas are equal and can accept write requests and are responsible for propagating the data modification to the rest of the group.
 
   Write requests are concurrently handled by all the nodes and they may have conflict (disagree on the order for some requests) caused by latency of the propagation requests between nodes.\
-  Conflict Resolution: \
+  Conflict Resolution: 
   (eagerly: resolved during write operation, lazily: resolved after write operation, i.e., subsequent read operations)\
   * Exposing conflict resolution to the clients (client selects the version, i.e., shopping cart app)
   * Last-write-wins conflict resolution ()
