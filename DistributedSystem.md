@@ -70,3 +70,15 @@ In summary, distributed system is the solution for all above
 * Byzantine: A node exhibits arbitrary behavior: it may transmit arbitrary messages at arbitrary times, take incorrect steps, or stop.
 
 ### Exactly-Once Semantics
+
+As network is not reliable, messages might get lost and nodes may deliver messages multiple times because the sender can't know what really happens. \
+__Approaches to avoid multiple deliveries of a message__
+* Idempotent operations approach: the operation we apply multiple times has the same result with the initial application. for ex: set (not allow remove), counter-ex: increase counter by one each time
+* De-duplication approach: Sender gives every message has a unique identifier, and the receiver will know if the received message is duplicate by recognizing its id.
+
+__Delivery vs. Processing__\
+* Delivery: arrival of the message at the destination node at the hardware level
+* Processing: handling of the message from the software application layer of the node
+
+So important and possible is exactly-Once for Processing, but not for Delivery\
+__Other Delivery Semantics__: at-most-once -- send every message only once, at-least-once -- send a message continuously until get an acknowledgement from recipient
