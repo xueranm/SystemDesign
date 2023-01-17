@@ -92,5 +92,8 @@ Failure Detector Properties:
 * Completeness: the percentage of crashed nodes a failure detector identifies in a certain period
 * Accuracy: number of mistakes that the detector makes in a certain period
 
+There is no perfect failure detector
+
+### Stateless and Stateful Systems
 
 
