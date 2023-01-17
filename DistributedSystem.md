@@ -157,8 +157,8 @@ __Availability__ (the ability of the system to remain functional despite failure
   
 ### Single-Master Replication Algorithm
 
-  Alias, __primary-backup replication__.\
-  It is a technique where we designate a single node amongst the replicas as the leader (or primary) that receives all the updates. Remaining replicas are followers (or secondaries) which only handle read requests. \
+  Alias, __primary-backup replication__.
+  > It is a technique where we designate a single node amongst the replicas as the leader (or primary) that receives all the updates. Remaining replicas are followers (or secondaries) which only handle read requests. \
   Leader receives updates and executes them locally and __propagates__ the updates to the followers. This ensures the consistent view of the data for all replicas. 
   <img width="405" alt="image" src="https://user-images.githubusercontent.com/24993672/212803284-05c67620-eede-4f3f-a712-ca2e1169fca8.png">
   
@@ -187,6 +187,10 @@ __Availability__ (the ability of the system to remain functional despite failure
   
 ### Multi-Master Replication Algorithm 
 
+  Alias, __multi-primary replication__
+  > It is an alternative replication technique that favors higher availability and performance over data consistency. In it, all replicas are equal and can accept write requests and are responsible for propagating the data modification to the rest of the group.
+
+  Write requests are concurrently handled by all the nodes and they may have conflict (disagree on the order for some requests).
   
   
     
