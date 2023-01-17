@@ -114,12 +114,14 @@ ___Scalability__\
 ### Algorithms for Horizontal Partitioning
 
 * Range Partitioning
+
   Split a dataset into ranges according to the value of a specific attribute. Then store each range in a separate node. The system should store a list of all ranges and map which node stores a specific range. Example: alphabetical split.\
   Pros: Simplicity and ease of implementation, range queries using partitioning key value, good performance for range queries when the queried range is small and resides in a single node, adjusting ranges (re-partitioning) easier and more efficient (exchanges data only between two nodes)\
   Cons: can't query range using keys other than partitioning key, bad performance for range queries when the queried range is bid and resides in multiple nodes, uneven distribution of the traffic or data may cause some nodes to overload (for ex, for alphabetical split, some letters may appear as the initial letters more frequently than others)\
   Some systems that leverage this technique: Google's BigTable, Apache HBase. 
   
 * Hash Partitioning
+
   Apply a hash function to a specific attribute of each row. This results in a number that determines which partition (node) this row belongs to. \
   Mapping Process: Assume we have n number of nodes, and try to identify which node locates a record with a value s, we'll calculate it with the fomula __hash(s) mod n__.\
   The mapping will take place both when we write a new record or receive a request to find a record. And if any node failed, the re-mapping and reassignment is needed.\
@@ -127,6 +129,7 @@ ___Scalability__\
   Cons: Can't perform range queries, adding or removing nodes causes repartition -> significant data movement
   
 * Consistent Hashing
+
   It is similar to Hash Partitioning, but solves the increased data movement problem caused by hash partitioning. \
   Each node in the system is randomly assigned an integer in a range of [0, L], the range is called __Ring__. Then the system uses a record with an attribute value __s__ as a partitioning key to locating the node after the point __hash(s) mod L__ in the ring. So when a new node enters the ring, it receives data only from the next node in the ring, all other nodes don't need to exchange any more data. It is similar when a node leaves the ring. 
   <img width="698" alt="image" src="https://user-images.githubusercontent.com/24993672/212797669-3f46bd9b-9d12-4c39-af61-6925a09b6f73.png">
@@ -161,10 +164,12 @@ __Availability__ (the ability of the system to remain functional despite failure
   
 #### Techniques for propagating updates
   * Synchronous replication
+  
     The node signals client that the update is completed only if the node received acknowledgements of completed updates from all other replicas. \
     Pro: Durability. (If the leader crashes right after acknowledgement, the update is still kept.) \
     Con: Writing requests are slower. (it has to wait for responses from all other replicas)
   * Asynchronous replication
+  
     The node signals client that update is completed as soon as it performs the update itself in its local storage, without waiting for responses from the other replicas.\
     Pro: Increase performance for write requests.
     Con: reduced consistency and decreased durability 
