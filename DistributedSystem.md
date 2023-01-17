@@ -127,4 +127,5 @@ Stateful systems present many more challenges as different nodes can hold differ
   Cons: Can't perform range queries, adding or removing nodes causes repartition -> significant data movement
   
 * Consistent Hashing
-
+  It is similar to Hash Partitioning, but solves the increased data movement problem caused by hash partitioning. \
+  Each node in the system is randomly assigned an integer in a range of [0, L], the range is called __Ring__. Then the system uses a record with an attribute value __s__ as a partitioning key to locating the node after the point __hash(s) mod L__ in the ring. So when a new node enters the ring, it receives data only from the next node in the ring, all other nodes don't need to exchange any more data. It is similar when a node leaves the ring. 
