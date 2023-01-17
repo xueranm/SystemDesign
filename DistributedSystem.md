@@ -153,10 +153,36 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Optimistic replication (lazy replication): allows the different replicas to diverge. They will converge again if the system doesn't receive any updates or enter a quiesced state for a period of time 
   
 ### Single-Master Replication Algorithm
+
   Alias, __primary-backup replication__.\
   It is a technique where we designate a single node amongst the replicas as the leader (or primary) that receives all the updates. Remaining replicas are followers (or secondaries) which only handle read requests. \
   Leader receives updates and executes them locally and __propagates__ the updates to the followers. This ensures the consistent view of the data for all replicas. 
   <img width="405" alt="image" src="https://user-images.githubusercontent.com/24993672/212803284-05c67620-eede-4f3f-a712-ca2e1169fca8.png">
+  
+#### Techniques for propagating updates
+  * Synchronous replication
+    The node signals client that the update is completed only if the node received acknowledgements of completed updates from all other replicas. \
+    Pro: Durability. (If the leader crashes right after acknowledgement, the update is still kept.) \
+    Con: Writing requests are slower. (it has to wait for responses from all other replicas)
+  * Asynchronous replication
+    The node signals client that update is completed as soon as it performs the update itself in its local storage, without waiting for responses from the other replicas.\
+    Pro: Increase performance for write requests.
+    Con: reduced consistency and decreased durability 
+    
+#### Pros and Cons of single-master replication
+
+  Pros: simple, easier to support transacional operations because concurrent operatiions serialized in the leader node, __scalable for read-heavy workloads__ \
+  Cons: __not scalable for write-heavy workload__, impose the trade-off between performance, durability and consistency, too many listening followers may create bottleneck in the network bandwidth of the leader node, failing over to followers from crashed leader is slow -> downtime and risk of errors\
+  Examples of applications: PostgreSQL, MySQL
+  
+#### Failover
+  
+  * Manual approach: operator selects the new leader 
+  * Automated approach: the followers detect periodically if the leader is healthy and if not then elect a new leader. Faster but risky if the followers get incorrect state of leader
+  
+  
+  
+    
 
   
   
