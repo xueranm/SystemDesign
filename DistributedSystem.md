@@ -98,3 +98,18 @@ There is no perfect failure detector
 
 Stateless distributed systems are much easier to design, build and scale. 
 Stateful systems present many more challenges as different nodes can hold different pieces of data which require additional work. They need to direct traffic to the right place and ensure each instance is in sync with the others.
+
+## Concepts and Theorems
+
+### Partitioning
+
+* Scalability
+  Partitioning can be used to achieve scalability:
+  
+<img width="561" alt="image" src="https://user-images.githubusercontent.com/24993672/212787819-39c794c7-6dfe-47f6-bc7c-0fa0485d3ae4.png">
+
+  - Vertical Partitioning: join operation, normalization. limitation -- join operation may be less efficient and need to access data from multiple nodes
+  - Horizontal Partitioning (or sharding):alphabetical split, limitation -- search may need to access multiple nodes, potential for loss of transactional semantics, harder to perform atomic operations
+
+
+
