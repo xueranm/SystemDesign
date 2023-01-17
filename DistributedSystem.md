@@ -129,3 +129,15 @@ Stateful systems present many more challenges as different nodes can hold differ
 * Consistent Hashing
   It is similar to Hash Partitioning, but solves the increased data movement problem caused by hash partitioning. \
   Each node in the system is randomly assigned an integer in a range of [0, L], the range is called __Ring__. Then the system uses a record with an attribute value __s__ as a partitioning key to locating the node after the point __hash(s) mod L__ in the ring. So when a new node enters the ring, it receives data only from the next node in the ring, all other nodes don't need to exchange any more data. It is similar when a node leaves the ring. 
+  <img width="698" alt="image" src="https://user-images.githubusercontent.com/24993672/212797669-3f46bd9b-9d12-4c39-af61-6925a09b6f73.png">
+  
+  <img width="619" alt="image" src="https://user-images.githubusercontent.com/24993672/212797716-9e42a029-9223-4f19-8e5e-9d3a0d735b9d.png">
+  
+  <img width="695" alt="image" src="https://user-images.githubusercontent.com/24993672/212797745-eaf5b43c-cee0-4dd6-9a87-f4b59bbce0d9.png">
+
+  <img width="634" alt="image" src="https://user-images.githubusercontent.com/24993672/212797774-db6185bc-345a-4ad4-a7e8-f19e5e83bdae.png">
+
+  <img width="712" alt="image" src="https://user-images.githubusercontent.com/24993672/212797792-9c353c9a-2da5-4d78-bd96-bcb7dcc2db97.png">
+
+
+  
