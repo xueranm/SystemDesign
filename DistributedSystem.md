@@ -120,5 +120,7 @@ Stateful systems present many more challenges as different nodes can hold differ
   Some systems that leverage this technique: Google's BigTable, Apache HBase. 
   
 * Hash Partitioning
+  Apply a hash function to a specific attribute of each row. This results in a number that determines which partition (node) this row belongs to. 
+  
 * Consistent Hashing
 
