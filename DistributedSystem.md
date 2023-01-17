@@ -180,6 +180,8 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Manual approach: operator selects the new leader 
   * Automated approach: the followers detect periodically if the leader is healthy and if not then elect a new leader. Faster but risky if the followers get incorrect state of leader
   
+### Multi-Master Replication Algorithm 
+
   
   
     
