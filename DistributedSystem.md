@@ -25,7 +25,7 @@ __Availability__
 
 > Availability is the probability of a system to work as required, when required, during a mission
 
-Solution: Redundancy, store data into multiple, redundant computers\
+Solution: Redundancy, store data into multiple, redundant computers
 
 In summary, distributed system is the solution for all above
 
@@ -103,7 +103,7 @@ Stateful systems present many more challenges as different nodes can hold differ
 
 ### Partitioning
 
-___Scalability__\
+__Scalability__\
   Partitioning can improve the scalability and performance of a system by distributing data and request load to multiple nodes:
   
 <img width="561" alt="image" src="https://user-images.githubusercontent.com/24993672/212787819-39c794c7-6dfe-47f6-bc7c-0fa0485d3ae4.png">
