@@ -208,8 +208,13 @@ __Availability__ (the ability of the system to remain functional despite failure
   Reverse strategy: write data only to the node that is responsible for processing a write operation, but process read operations by reading from all the nodes and returning the latest value. \
   This increases write availability but decreases read availability.
   
-* Mechanism that trade-off above with balance: Quorums
+* Mechanism that trade-off above with balance: __Quorum-based voting protocol__
 
+  <img width="506" alt="image" src="https://user-images.githubusercontent.com/24993672/213953692-efeb7439-072f-453e-9a3c-78baef4d0d54.png">
+
+  First rule gurantees that a data item is not read and written by two operations concurrently.\
+  Second rule ensures 
+  
 
   
   
