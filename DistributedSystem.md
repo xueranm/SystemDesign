@@ -196,6 +196,22 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Exposing conflict resolution to the clients (client selects the version, i.e., shopping cart app)
   * Last-write-wins conflict resolution (each version is tagged with a timestamp using local clock, always select the version with the latest timestamp. but because there is no global notion of time, it may make error)
   * Causality tracking algorithms (use an algorithm to keep track of causal relationships between different requests, but for requests that are actually not causally related i.e. concurrent, it is hard to resolve conflict)
+
+### Quorums in Distributed Systems
+
+* Problem in Synchronous Replicatioin
+
+  Availability is low for write operations, because the failure of a single node makes the system unable to process writes until the node recovers.
+  
+* General solution
+
+  Reverse strategy: write data only to the node that is responsible for processing a write operation, but process read operations by reading from all the nodes and returning the latest value. \
+  This increases write availability but decreases read availability.
+  
+* Mechanism that trade-off above with balance: Quorums
+
+
+  
   
   
   
