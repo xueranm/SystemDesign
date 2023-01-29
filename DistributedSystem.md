@@ -216,6 +216,18 @@ __Availability__ (the ability of the system to remain functional despite failure
   Second rule ensures that at least one node receives both of the two write operations and imposes an order on them. \
   The concept of a quorum is used extensively in other areas, like distributed transactions or consensus protocols.
   
+### Safety Guarantees in Distributed Systems
+
+  <img width="419" alt="image" src="https://user-images.githubusercontent.com/24993672/215363189-47e01406-9a09-427b-b99f-2a1b0493235d.png">
+  
+  Corresponding to the difficulties caused by the following properties:\
+  <img width="580" alt="image" src="https://user-images.githubusercontent.com/24993672/215363415-0bfa02cc-5848-479b-b89a-ed4abfdfd054.png">
+
+
+  * Atomicity: challenging is Partial failures
+  * Consistency: challenging is Network Asynchrony 
+  * Isolation: challenging is inherent Concurrency
+    
   
 
   
