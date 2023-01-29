@@ -213,7 +213,9 @@ __Availability__ (the ability of the system to remain functional despite failure
   <img width="506" alt="image" src="https://user-images.githubusercontent.com/24993672/213953692-efeb7439-072f-453e-9a3c-78baef4d0d54.png">
 
   First rule gurantees that a data item is not read and written by two operations concurrently.\
-  Second rule ensures 
+  Second rule ensures that at least one node receives both of the two write operations and imposes an order on them. \
+  The concept of a quorum is used extensively in other areas, like distributed transactions or consensus protocols.
+  
   
 
   
