@@ -227,6 +227,12 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Atomicity: challenging is Partial failures
   * Consistency: challenging is Network Asynchrony 
   * Isolation: challenging is inherent Concurrency
+
+### ACID (Atomicity, Consistency, Isolation, Durability) in traditional db transactions 
+  > __Atomicity__ guarantees that a transaction that comprises multiple operations is treated as a single unit. So, the operation is either executed to all the nodes or none.\
+  > __Consistency__ guarantees that a transaction only transitions the database from one valid state to another valid state, while maintaining any database invariants. For ex, one record in table A with reference to record in table B thru fk, db will prevent a transaction from deleting a record from A unless the refered record in B is already deleted.\
+  > __Isolation__ guarantees that even though transactions might run concurrently and have data dependencies, the result is as if one of them was executed at a time and there was no interference between them.\
+  > __Durability__ guarantees that once a transaction is committed, it remains committed even in the case of failure. In the context of distributed systems, this means that transactions need to be durably stored in multiple nodes.
     
   
 
