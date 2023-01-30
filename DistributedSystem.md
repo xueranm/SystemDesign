@@ -263,6 +263,10 @@ __Availability__ (the ability of the system to remain functional despite failure
     Weaker consistency Model. Requires that only operations that are causally related need to be seen in the same order by all the nodes. Usage: display comments out of chronological order so every comment is displayed after the comment it replies to.
   * Eventual Consistency:
     One of the weakest consistency model. Usage: As long as the system eventually arrives at a stable state and thus read ops will return the same result, reads don't need to return the latest write. Inconsistencies can be resolved at the application level. 
+    
+### Anomalies 
+
+  
   
  
   
