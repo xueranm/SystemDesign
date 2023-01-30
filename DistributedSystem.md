@@ -264,7 +264,14 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Eventual Consistency:
     One of the weakest consistency model. Usage: As long as the system eventually arrives at a stable state and thus read ops will return the same result, reads don't need to return the latest write. Inconsistencies can be resolved at the application level. 
     
-### Anomalies 
+### Isolation Levels and Anomalies 
+
+  __Isolation Levels__
+  * Serializability: two transactions executed concurrently should give the same result as though executed sequentially
+  * Repeatable read: the data once read by a transaction will not change thru-out its course
+  * Snapshot isolation: all reads made in a transaction see a consistent snapshot of the db from the point it started and till the transaction commits successfully if no other transaction has updated the same data since the snapshot
+  * Read committed: it doesn't allow transactions to read data that has not yet been committed by another transaction
+  * Read uncommitted: it is the lowest 
 
   
   
