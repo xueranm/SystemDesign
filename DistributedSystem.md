@@ -234,6 +234,40 @@ __Availability__ (the ability of the system to remain functional despite failure
   > __Isolation__ guarantees that even though transactions might run concurrently and have data dependencies, the result is as if one of them was executed at a time and there was no interference between them.\
   > __Durability__ guarantees that once a transaction is committed, it remains committed even in the case of failure. In the context of distributed systems, this means that transactions need to be durably stored in multiple nodes.
     
+### CAP Theorem (Consistency, Availability, Partition Tolerance)
+
+  > __Consistency__ means that every successful read request receives the result of the most recent write request. \
+  > __Availability__ means that every request receives a non-error response, without any guarantees on whether it reflects the most recent write request. \
+  > __Partition tolerance__ means that the system can continue to operate despite an arbitrary number of messages being dropped by the network between nodes due to a __network partition__. Trade-off between consistency or availability. 
+
+  Use Case: A user performs a write and then a read. Assume that a different node processes each operation (network partition), then: 1. it can fail one of the operations and break the availability property, or 2. it can process both the operations, which will return a stale value from the read and break the consistency property
+  
+  
+  Choice between AP, CP only happens during a network partition. \
+  <img width="473" alt="image" src="https://user-images.githubusercontent.com/24993672/215365458-fc2c0eda-53dc-4d91-aa5e-7bc0b15e819e.png">
+  
+  
+  __PACELC Theorem__
+  
+  When no network partition, both availability and consistency can be satisfied. But there is a trade-off between latency and consistency:\
+  To guarantee data consistency, the system needs to delay write operations until the data has been propagated across the ststem, thus -> latency hit. For ex, single-master replication scheme with synchronous replication (consistency > latency). \
+  In addition to CP, AP, new categories: EL, EC.
+  
+#### Consistency Models
+
+  * Linearizability: 
+    Operations appear to be instantaneous to the external client. That said, once an operation is complete and acknowledgement is delivered to the client, it is immediately visible to all other clients. Usage: synchronous replication. Can build logic like mutexes, semaphores, counters that needs stronge consistency models.
+  * Sequential Consistency:
+    Weaker consistency Model. Operations are allowed to take effect before their invocation or after their completion. Operations from different clients have to be seen in the same order by all other clients. Usage: We expect that posts from a single friend and comments in a post to be displayed in the right order.
+  * Causal Consistency:
+    Weaker consistency Model. Requires that only operations that are causally related need to be seen in the same order by all the nodes. Usage: display comments out of chronological order so every comment is displayed after the comment it replies to.
+  * Eventual Consistency:
+    One of the weakest consistency model. Usage: As long as the system eventually arrives at a stable state and thus read ops will return the same result, reads don't need to return the latest write. Inconsistencies can be resolved at the application level. 
+  
+ 
+  
+
+  
   
 
   
