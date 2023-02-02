@@ -271,9 +271,16 @@ __Availability__ (the ability of the system to remain functional despite failure
   * Repeatable read: the data once read by a transaction will not change thru-out its course
   * Snapshot isolation: all reads made in a transaction see a consistent snapshot of the db from the point it started and till the transaction commits successfully if no other transaction has updated the same data since the snapshot
   * Read committed: it doesn't allow transactions to read data that has not yet been committed by another transaction
-  * Read uncommitted: it is the lowest 
+  * Read uncommitted: it is the lowest isolation level and allows the transaction to read uncommitted data by other transactions
 
-  
+  __Anomalies__
+  * Dirty writes: a transaction overwrite a value that was written but not committed yet. Violate integrity constraints, and make rollback to previous image impossible
+  * Dirty reads: Read a value that has been written but not yet committed.
+  * (Fuzzy) non-repeatable reads: A value is retrieved twice during a transaction but the value is different.
+  * Phantom reads: a transaction does a predicate-based read, and another transaction writes or removes a data item matched by that predicate while the first is still in flight.
+  * Lost updates: two transactions read the same value and then try to update it to two different values.
+  * Read skew: there are integrity constraints between two data items that seem to be violated because a transaction can only see partial results of another transaction 
+  * Write skew:
   
  
   
