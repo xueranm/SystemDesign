@@ -314,6 +314,11 @@ __Availability__ (the ability of the system to remain functional despite failure
     <img width="442" alt="image" src="https://user-images.githubusercontent.com/24993672/229325697-af06ab81-2947-41ca-b735-625d6ac42a1f.png">
    
     So need __strict serializability__: a model that is a combination of linearizability and serializability 
+    
+    * Hierarchy tree
+    
+    <img width="708" alt="image" src="https://user-images.githubusercontent.com/24993672/229325839-5608b35f-fbdd-41ab-8b48-db470e712291.png">
+
   
   
   
