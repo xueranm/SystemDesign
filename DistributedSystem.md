@@ -279,9 +279,20 @@ __Availability__ (the ability of the system to remain functional despite failure
   * (Fuzzy) non-repeatable reads: A value is retrieved twice during a transaction but the value is different.
   * Phantom reads: a transaction does a predicate-based read, and another transaction writes or removes a data item matched by that predicate while the first is still in flight.
   * Lost updates: two transactions read the same value and then try to update it to two different values.
+  <img width="641" alt="image" src="https://user-images.githubusercontent.com/24993672/229324794-764826ef-8b78-4d7e-a4d0-2a5208e4b4ef.png">
+
   * Read skew: there are integrity constraints between two data items that seem to be violated because a transaction can only see partial results of another transaction 
-  * Write skew:
+  <img width="629" alt="image" src="https://user-images.githubusercontent.com/24993672/229324804-9c713883-b47e-4aa4-bf8d-0b82324908f3.png">
+
+  * Write skew: occurs when two transactions read the same data, but then modify disjoint sets of data
+  <img width="629" alt="image" src="https://user-images.githubusercontent.com/24993672/229324808-8f8472bc-e934-46d8-ade5-1f0853c2a8f0.png">
+
+### Prevention of Anomalies
+
+  * Serializable isolation level:  prevents all of the anomalies
   
+  <img width="920" alt="image" src="https://user-images.githubusercontent.com/24993672/229325081-ec1ae560-e341-4699-89a0-c5c4b55633d7.png">
+
  
   
 
