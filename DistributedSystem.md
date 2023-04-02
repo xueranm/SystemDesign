@@ -1,6 +1,6 @@
 # Distributed Systems
 
-## Intro
+## Intro and Formulalities, Theorems
 > “A distributed system is a system whose components are located on different networked computers, which communicate and coordinate their actions by passing messages to one another.”
 
 Assume a node is a machine then
@@ -319,7 +319,17 @@ __Availability__ (the ability of the system to remain functional despite failure
     
     <img width="708" alt="image" src="https://user-images.githubusercontent.com/24993672/229325839-5608b35f-fbdd-41ab-8b48-db470e712291.png">
 
-  
+## Distributed Transactions
+
+   * Transaction
+
+    A transaction is a unit of work performed in a database system that represents a change potentially composed of multiple operations.
+    
+    * Distributed transaction
+    
+    A distributed transaction is a transaction that takes place in two or more different nodes.
+    
+    
   
   
   
