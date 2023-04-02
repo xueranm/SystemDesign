@@ -293,12 +293,27 @@ __Availability__ (the ability of the system to remain functional despite failure
   
   <img width="920" alt="image" src="https://user-images.githubusercontent.com/24993672/229325081-ec1ae560-e341-4699-89a0-c5c4b55633d7.png">
 
- 
+### Similarities and Differences between consistency models & isolation levels
   
+  <img width="496" alt="image" src="https://user-images.githubusercontent.com/24993672/229325184-1c26fb1b-8afa-4fa7-b5b7-533cd1a73547.png">
 
-  
-  
+  * Similarities 
+    Both are essential constructs that allow us to express:
 
+      - Which executions are possible
+      - Which executions are not possible
+      
+    stricter and fewer executions -> increased safety at the cost of reduced performance and availability 
+    
+    * Differences
+      - Consistency models are applied to single-object operations (e.g. read/write to a single register), while isolation levels are applied to multi-object operations (e.g. read and write from/to multiple rows in a table within a transaction).
+      - Linearizability provides real-time guarantees, while serializability does not.
+
+    * Real-time guarantees' importance 
+    
+    <img width="442" alt="image" src="https://user-images.githubusercontent.com/24993672/229325697-af06ab81-2947-41ca-b735-625d6ac42a1f.png">
+   
+    So need __strict serializability__: a model that is a combination of linearizability and serializability 
   
   
   
