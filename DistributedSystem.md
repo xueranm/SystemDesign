@@ -338,7 +338,7 @@ __Availability__ (the ability of the system to remain functional despite failure
      It guarantees that the result of any allowed execution of transactions (ex. __schedule__) is the same as that produced by some serial execution of the same transactions.\
      Types:
      - View serializability (hard to determine)
-     - __Conflict serializability__ \
+     - __Conflict serializability__ 冲突可串行化\
        Two operations are conflicting: 1. belong to different transactions; 2. they are on the same data item, and at least one of them is a write operation (a write operation inserts, modifies or deletes an object)\
        Use Precedence graph to determine whether a schedule is conflict serializable\
        __Precedence Graph__: a directed graph
@@ -350,8 +350,10 @@ __Availability__ (the ability of the system to remain functional despite failure
 
 <img width="608" alt="image" src="https://user-images.githubusercontent.com/24993672/235406518-5ff629d9-b339-4e36-9b3e-8b3cc20dd669.png">
 
-    
-  
+   * How to generate a (conflict) serializable schedule?\
+     __Mechanisms for concurrency control__
+     - Pessimistic concurrency control
+     - Optimistic concurrency control
   
   
     
