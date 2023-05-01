@@ -325,10 +325,21 @@ __Availability__ (the ability of the system to remain functional despite failure
 
     A transaction is a unit of work performed in a database system that represents a change potentially composed of multiple operations.
     
-    * Distributed transaction
+   * Distributed transaction
     
     A distributed transaction is a transaction that takes place in two or more different nodes.
     
+    
+    A distributed transaction needs to provide ACID(Atomicity, Consistency, Isolation, Durability) guarantees.
+    
+### Isolation
+
+   * Serializability
+     It guarantees that the result of any allowed execution of transactions (ex. __schedule__) is the same as that produced by some serial execution of the same transactions.\
+     Types:
+     - View serializability (hard to determine)
+     - Conflict serializability 
+       Two operations are conflicting: 1. belong to different transactions; 2. they are on the same data item, and at least one of them is a write operation (a write operation inserts, modifies or deletes an object)
     
   
   
