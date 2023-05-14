@@ -359,6 +359,20 @@ __Availability__ (the ability of the system to remain functional despite failure
          - It delays the checking of violating the serializability until the end of the transaction. It will abort the transaction if check and find a violation, then restart and re-execute from the beginning. 
          - Cases: when very few conflicts between transactions. Case for workloads with many read-only transactions and only a few write transactions, or in cases where most of the transactions touch different data
      - Trade-off between above two: the extra overhead from locking mechanisms and the wasted computation from aborted transactions
+   * Use cases for Pessimistic concurrency control
+     - 2-Phase locking (2PL): a protocol
+       It uses locks to prevent concurrent transactions from interfering. \
+       __Locks types__:\
+       - Write (exclusive) locks
+       - Read (shared) locks\
+       Read lock blocks only write lock, write lock blocks both write and read lock. \
+       __Two Phases__:\
+       - Expanding phase: only acquire locks
+       - Shrinking phase: only release locks
+     - Risk of 2-Phase: Deadlocks (two transactions might wait on each other for the release of a lock)
+       - Prevention: transactions know all the locks they need in advance and acquire them in an ordered way , it is usually done by the application.
+       - Detection: keep track of which transaction a transaction waits on, using this info to detect cycles that represent deadlocks, then forcing one of them to abort, it is typically done by the database. 
+       
   
   
     
