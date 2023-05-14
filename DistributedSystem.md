@@ -352,14 +352,14 @@ __Availability__ (the ability of the system to remain functional despite failure
 
    * How to generate a (conflict) serializable schedule?\
      __Mechanisms for concurrency control__
-     - Pessimistic concurrency control:
+     - Pessimistic concurrency control(PCC)
          - It blocks a transaction if it's expected to cause violation of serializability and resume when it is safe. ex. lock
          - Cases: it has some overhead from the use of locks. Perform better in workloads that contain a lot of conflicted transactions because they reduce the abortation and restarting.
-     - Optimistic concurrency control
+     - Optimistic concurrency control(OCC)
          - It delays the checking of violating the serializability until the end of the transaction. It will abort the transaction if check and find a violation, then restart and re-execute from the beginning. 
          - Cases: when very few conflicts between transactions. Case for workloads with many read-only transactions and only a few write transactions, or in cases where most of the transactions touch different data
      - Trade-off between above two: the extra overhead from locking mechanisms and the wasted computation from aborted transactions
-   * Use cases for Pessimistic concurrency control
+   * Use cases for PCC
      - 2-Phase locking (2PL): a protocol
        It uses locks to prevent concurrent transactions from interfering. \
        __Locks types__:\
@@ -372,7 +372,12 @@ __Availability__ (the ability of the system to remain functional despite failure
      - Risk of 2-Phase: Deadlocks (two transactions might wait on each other for the release of a lock)
        - Prevention: transactions know all the locks they need in advance and acquire them in an ordered way , it is usually done by the application.
        - Detection: keep track of which transaction a transaction waits on, using this info to detect cycles that represent deadlocks, then forcing one of them to abort, it is typically done by the database. 
-       
+   * Use cases for OCC
+     - 3 phases
+       - Begin phase
+         transactions are assigned a unique timestamp that marks the beginning of the transaction 
+       - Read & modify phase
+         transactions execute their read and write tentatively
   
   
     
