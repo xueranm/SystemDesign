@@ -352,8 +352,13 @@ __Availability__ (the ability of the system to remain functional despite failure
 
    * How to generate a (conflict) serializable schedule?\
      __Mechanisms for concurrency control__
-     - Pessimistic concurrency control
+     - Pessimistic concurrency control:
+         - It blocks a transaction if it's expected to cause violation of serializability and resume when it is safe. ex. lock
+         - Cases: it has some overhead from the use of locks. Perform better in workloads that contain a lot of conflicted transactions because they reduce the abortation and restarting.
      - Optimistic concurrency control
+         - It delays the checking of violating the serializability until the end of the transaction. It will abort the transaction if check and find a violation, then restart and re-execute from the beginning. 
+         - Cases: when very few conflicts between transactions. Case for workloads with many read-only transactions and only a few write transactions, or in cases where most of the transactions touch different data
+     - Trade-off between above two: the extra overhead from locking mechanisms and the wasted computation from aborted transactions
   
   
     
