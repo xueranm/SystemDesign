@@ -362,11 +362,12 @@ __Availability__ (the ability of the system to remain functional despite failure
    * Use cases for PCC
      - 2-Phase locking (2PL): a protocol
        It uses locks to prevent concurrent transactions from interfering. \
-       __Locks types__:\
+       __Locks types__:
        - Write (exclusive) locks
        - Read (shared) locks\
-       Read lock blocks only write lock, write lock blocks both write and read lock. \
-       __Two Phases__:\
+       Read lock blocks only write lock, write lock blocks both write and read lock. 
+       
+       __Two Phases__:
        - Expanding phase: only acquire locks
        - Shrinking phase: only release locks
      - Risk of 2-Phase: Deadlocks (two transactions might wait on each other for the release of a lock)
@@ -377,7 +378,10 @@ __Availability__ (the ability of the system to remain functional despite failure
        - Begin phase
          transactions are assigned a unique timestamp that marks the beginning of the transaction 
        - Read & modify phase
-         transactions execute their read and write tentatively
+         transactions execute their read and write tentatively (when an item is modified, a copy of the item is written to a tempporary, local storage location. A read operation first checks for a copy of the item in the local storage and returns this one if it exists.)
+       - Validate & Commit/Rollback Phase
+         The transaction enters this phase when all operations have been executed.\
+         It checks if there are other transactions that have modified the data this transaction has accessed, and have started after this transaction's start time. If there are, then the transaction is aborted and restarted from the beginning, acquiring a new timestamp. Otherwise, it can be committed. (后来者居上）
   
   
     
