@@ -382,6 +382,10 @@ __Availability__ (the ability of the system to remain functional despite failure
        - Validate & Commit/Rollback Phase
          The transaction enters this phase when all operations have been executed.\
          It checks if there are other transactions that have modified the data this transaction has accessed, and have started after this transaction's start time. If there are, then the transaction is aborted and restarted from the beginning, acquiring a new timestamp. Otherwise, it can be committed. (后来者居上）
+     - __Ways to implement Validation logic__
+       - Version checking
+       - Timestamp ordering (it records finish timstamp and iterate over all the transactions with an assigned timestamp between the transactions' start and finish timestamp)  
+    
   
   
     
