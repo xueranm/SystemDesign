@@ -337,6 +337,7 @@ __Availability__ (the ability of the system to remain functional despite failure
 ### Isolation
 
    * Serializability
+
      It guarantees that the result of any allowed execution of transactions (ex. __schedule__) is the same as that produced by some serial execution of the same transactions.\
      Types:
      - View serializability (hard to determine)
@@ -352,7 +353,7 @@ __Availability__ (the ability of the system to remain functional despite failure
 
 <img width="608" alt="image" src="https://user-images.githubusercontent.com/24993672/235406518-5ff629d9-b339-4e36-9b3e-8b3cc20dd669.png">
 
-   * How to generate a (conflict) serializable schedule?\
+   * How to generate a (conflict) serializable schedule? (Achieving Serializability)\
      __Mechanisms for concurrency control__
      - Pessimistic concurrency control(PCC)
          - It blocks a transaction if it's expected to cause violation of serializability and resume when it is safe. ex. lock
@@ -387,7 +388,34 @@ __Availability__ (the ability of the system to remain functional despite failure
      - __Ways to implement Validation logic__
        - Version checking
        - Timestamp ordering (it records finish timstamp and iterate over all the transactions with an assigned timestamp between the transactions' start and finish timestamp)  
-    
+   * Snapshot Isolation and how to achieve it
+     * __Snapshot isolation__ (SI) is an isolation level that guarantees that all reads made in a transaction see a consistent snapshot of the database from the point it started, and the transaction commits successfully if no other transaction has updated the same data since that snapshot
+     * Multi-version concurrency control (MVCC)
+       * Multiversion Concurrency Control (MVCC) is a technique where multiple physical versions are maintained for a single logical data item. As a result, update operations do not overwrite existing records, but they write a new version of these records. Read operations can then select a specific version of a record, possibly an older one.
+       * __Steps__
+         * Each transaction is assigned a unique timestamp at the beginning.
+         * Every entry for a data item contains a version that corresponds to the timestamp of the transaction that created this new version.
+         * Every transaction records the following pieces of information during its beginning
+           * The transaction with the highest timestamp that has committed so far (say,Ts)
+           * The number of active transactions that have started but haven’t been committed yet
+       * Anomalies prevented or not
+         *  __Read operation__: a transaction returns the entry with the latest version that is earlier than Ts, and does not belong to one of the transactions that were active at the beginning of this transaction. 
+           * __Dirty Read__ prevented as only committed values from other transactions can be returned
+           * __Fuzzy Reads__ are also prevented since all the reads return values from the same snapshot and ignore values from transactions that committed after this transaction started.
+         * __Write Operation__: a transaction checks whether there is an entry for the same item that satisfies one of the following criteria: its version is higher than this transaction’s timestamp, or its version is lower than this transaction’s timestamp, but this version belongs to one of the transactions that were active at the beginning of this transaction. In any of these cases, the transaction is aborted and can be restarted from scratch with a larger timestamp.
+           * In the first case, if the transaction committed correctly, we would have an entry with version Tj committed before an entry with version Ti, even Ti < Tj, which is wrong.
+           * In the second case, the transaction is aborted to prevent a __Lost Update__ anomaly.
+         * Not prevented Anomalies: write skew
+           ![img.png](img.png)
+           ![img_1.png](img_1.png)
+           ![img_2.png](img_2.png)
+           ![img_3.png](img_3.png)
+           ![img_4.png](img_4.png)
+           ![img_5.png](img_5.png)
+       
+           
+
+)
   
   
     
