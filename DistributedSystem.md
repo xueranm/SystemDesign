@@ -64,6 +64,7 @@ In summary, distributed system is the solution for all above
 
 ### Types of Failures
 <img width="503" alt="image" src="https://user-images.githubusercontent.com/24993672/212606285-9687ee28-efc0-4a13-8eb5-0aa16a93ba27.png">
+
 * Fail-stop: A node halts and remains halted permanently. Other nodes can detect that the node has failed
 * Crash: A node halts, but silently. So, other nodes may not be able to detect this state. 
 * Omission: A node fails to respond to incoming requests.
