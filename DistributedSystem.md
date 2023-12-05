@@ -77,7 +77,7 @@ __Approaches to avoid multiple deliveries of a message__
 * Idempotent operations approach: the operation we apply multiple times has the same result with the initial application. for ex: set (not allow remove), counter-ex: increase counter by one each time
 * De-duplication approach: Sender gives every message has a unique identifier, and the receiver will know if the received message is duplicate by recognizing its id.
 
-__Delivery vs. Processing__\
+__Delivery vs. Processing__
 * Delivery: arrival of the message at the destination node at the hardware level
 * Processing: handling of the message from the software application layer of the node
 
@@ -299,6 +299,7 @@ __Availability__ (the ability of the system to remain functional despite failure
   <img width="496" alt="image" src="https://user-images.githubusercontent.com/24993672/229325184-1c26fb1b-8afa-4fa7-b5b7-533cd1a73547.png">
 
   * Similarities 
+
     Both are essential constructs that allow us to express:
 
       - Which executions are possible
@@ -306,11 +307,11 @@ __Availability__ (the ability of the system to remain functional despite failure
       
     stricter and fewer executions -> increased safety at the cost of reduced performance and availability 
     
-    * Differences
-      - Consistency models are applied to single-object operations (e.g. read/write to a single register), while isolation levels are applied to multi-object operations (e.g. read and write from/to multiple rows in a table within a transaction).
-      - Linearizability provides real-time guarantees, while serializability does not.
+  * Differences
+    - Consistency models are applied to single-object operations (e.g. read/write to a single register), while isolation levels are applied to multi-object operations (e.g. read and write from/to multiple rows in a table within a transaction).
+    - Linearizability provides real-time guarantees, while serializability does not.
 
-    * Real-time guarantees' importance 
+  * Real-time guarantees' importance 
     
     <img width="442" alt="image" src="https://user-images.githubusercontent.com/24993672/229325697-af06ab81-2947-41ca-b735-625d6ac42a1f.png">
    
