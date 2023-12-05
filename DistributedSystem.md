@@ -412,8 +412,18 @@ __Availability__ (the ability of the system to remain functional despite failure
            ![img_3.png](img_3.png)
            ![img_4.png](img_4.png)
            ![img_5.png](img_5.png)
-       
-           
+   * Achieving Full Serializable Snapshot Isolation
+     * __serializable snapshot isolation (SSI)__ can provide full serializability and has been integrated into commercial
+       * Statement: in the precedence graph of any non-serializable execution, there are two rw-dependency edges that form consecutive edges in a cycle. These involve two transactions that have been active concurrently
+         ![img_6.png](img_6.png)
+         A rw-dependency is a data dependency between transactions T1 and T0, where T0 reads a version of item x and T1 produces a version of item x that is later in the version order than the version read by T0
+       * Approach: The SSI approach detects these cases and breaks the cycle when they are about to happen. It prevents them from being formed by aborting one of the involved transactions. To do this, the SSI performs the following steps:
+         * It keeps track of the incoming and outgoing rw-dependency edges of each transaction.
+         * If there is a transaction that has both incoming and outgoing edges, the algorithm aborts one of the transactions and retries it later.
+       * it is sufficient to maintain two Boolean flags per transaction T.inConflict and T.outConflict, that denote whether there is an incoming and outgoing rw-dependency edge. These flags can be maintained in the following way:
+         * When a transaction T is performing a read, it is able to detect whether there is a version of the same item that was written after the transaction started, e.g., by another transaction U.  This would imply a rw-dependency edge, so the algorithm can update T.outConflict and U.inConflict to true.
+         * Every transaction creates a read lock, called SIREAD lock, when it performs a read. As a result, when a transaction performs a write, it can read the existing SIREAD locks and detect concurrent transactions that have previously read the same item. It thus updates the same Boolean flags accordingly.
+
 
 )
   
